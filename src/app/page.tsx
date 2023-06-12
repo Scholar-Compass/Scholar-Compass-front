@@ -1,95 +1,163 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+// app/page.tsx
+'use client'
 
-export default function Home() {
+import React, { useState } from 'react';
+import {
+  Box,
+  Container,
+  Flex,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Spinner,
+  Icon,
+  Text,
+} from '@chakra-ui/react';
+import {FaPaperPlane} from 'react-icons/fa';
+import RootLayout from "@/app/layout";
+
+function App() {
+  const [inputText, setInputText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  interface Message {
+    content: string;
+    isUser: boolean;
+  }
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputText(event.target.value);
+  };
+
+  const handleSendMessage = async () => {
+    if (inputText.trim() === '') {
+      return;
+    }
+
+    // Display user's input message
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { content: inputText, isUser: true },
+    ]);
+
+    setIsLoading(true);
+
+    // try {
+    //   // Send user's question to the API
+    //   const response = await fetch('/api/ask', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ question: inputText }),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   });
+    //
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //
+    //     // Display API response
+    //     setMessages((prevMessages) => [
+    //       ...prevMessages,
+    //       { content: data.response, isUser: false },
+    //     ]);
+    //   } else {
+    //     console.error('Request failed with status:', response.status);
+    //   }
+    // } catch (error) {
+    //   console.error('Request failed with error:', error);
+    // }
+
+    // mocked loading and data returned from server
+    setTimeout(() => {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { content: 'Hello, I am a bot.', isUser: false },
+      ]);
+      setIsLoading(false);
+    }, 1000);
+
+    setInputText('');
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <RootLayout>
+       <Flex
+          minHeight="100vh"
+          direction="column"
+        >
+        <Flex
+          p={4}
+          bg="blue.500"
+          color="white"
+          justify="center"
+          align="center"
+          boxSize="full"
+          position="sticky"
+          top={0}
+        >
+          <Text fontSize="2xl">ScholarCompass</Text>
+        </Flex>
+        <Container 
+          flex="1" 
+          pl={4} 
+          pr={4} 
+          mt={8} 
+          overflowY="scroll"
+        >
+          {messages.map((message, index) => (
+            <Flex
+              key={index}
+              justify={message.isUser ? 'flex-end' : 'flex-start'}
+              mt={2}
+              wordBreak={"break-word"}
+            >
+              <Box
+                bg={message.isUser ? 'blue.500' : 'gray.200'}
+                color={message.isUser ? 'white' : 'black'}
+                p={3}
+                borderRadius="lg"
+                boxShadow="md"
+                whiteSpace="pre-wrap"
+                maxWidth="70%"
+              >
+                {message.content}
+              </Box>
+            </Flex>
+          ))}
+
+          {isLoading && (
+            <Flex justify="flex-start" mt={4}>
+              <Spinner size="lg" color="blue.500" />
+            </Flex>
+          )}
+        </Container>
+
+        <Box 
+          mt={4} p={4} 
+          width="100%"
+          position="sticky"
+          bottom={0}
+        >
+          <InputGroup zIndex={999}>
+            <Input
+              placeholder="Type your message..."
+              value={inputText}
+              onChange={handleInputChange}
             />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+            <InputRightElement>
+              <Icon
+                as={FaPaperPlane}
+                color="blue.500"
+                cursor="pointer"
+                onClick={handleSendMessage}
+              />
+            </InputRightElement>
+          </InputGroup>
+        </Box>
+      </Flex>
+    </RootLayout>
+  );
 }
+
+export default App;
