@@ -48,41 +48,32 @@ function App() {
 
     setIsLoading(true);
 
-    // try {
-    //   // Send user's question to the API
-    //   const response = await fetch('http://127.0.0.1:8080/query', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ question: inputText }),
-    //     headers: {
-    //       'Content-Type': 'text/plain',
-    //     },
-    //   });
+    try {
+      // Send user's question to the API
+      const response = await fetch('http://47.244.189.5:8080/query', {
+        method: 'POST',
+        body: JSON.stringify({ question: inputText }),
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+      });
     
-    //   if (response) {
-    //     const data = await response.json();
+      if (response) {
+        const data = await response.json();
     
-    //     // Display API response
-    //     setMessages((prevMessages) => [
-    //       ...prevMessages,
-    //       { content: data.answer, isUser: false },
-    //     ]);
-    //   } else {
-    //     console.error('Request failed');
-    //   }
-    // } catch (error) {
-    //   console.error('Request failed with error:', error);
-    // } finally {
-    //   setIsLoading(false);
-    // }
-
-    // mocked loading and data returned from server
-    setTimeout(() => {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { content: 'Hello, I am a bot.', isUser: false },
-      ]);
+        // Display API response
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { content: data.answer, isUser: false },
+        ]);
+      } else {
+        console.error('Request failed');
+      }
+    } catch (error) {
+      console.error('Request failed with error:', error);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
 
     setInputText('');
   };
