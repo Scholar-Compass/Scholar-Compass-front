@@ -4,18 +4,16 @@
 import React, { useState } from 'react';
 import {
   Box,
-  Container,
   Flex,
   Input,
   InputGroup,
   InputRightElement,
   Spinner,
   Icon,
-  Text,
 } from '@chakra-ui/react';
 import {FaPaperPlane} from 'react-icons/fa';
 import RootLayout from "@/app/layout";
-import NavBar from './components/NavBar';
+import TitleBar from '@/components/TitleBar';
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -44,30 +42,32 @@ function App() {
 
     setIsLoading(true);
 
-    try {
-      // Send user's question to the API
-      const response = await fetch('127.0.0.1::8080/query', {
-        method: 'POST',
-        body: JSON.stringify({ question: inputText }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    // try {
+    //   // Send user's question to the API
+    //   const response = await fetch('127.0.0.1::8080/query', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ question: inputText }),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   });
     
-      if (response) {
-        const data = await response.json();
+    //   if (response) {
+    //     const data = await response.json();
     
-        // Display API response
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { content: data.response, isUser: false },
-        ]);
-      } else {
-        console.error('Request failed');
-      }
-    } catch (error) {
-      console.error('Request failed with error:', error);
-    }
+    //     // Display API response
+    //     setMessages((prevMessages) => [
+    //       ...prevMessages,
+    //       { content: data.response, isUser: false },
+    //     ]);
+    //   } else {
+    //     console.error('Request failed');
+    //   }
+    // } catch (error) {
+    //   console.error('Request failed with error:', error);
+    // } finally {
+    //   setIsLoading(false);
+    // }
 
     // mocked loading and data returned from server
     setTimeout(() => {
@@ -87,8 +87,18 @@ function App() {
           minHeight="100vh"
           direction="column"
         >
-        <NavBar/>
-        <Container flex="1" pl={4} pr={4} mt={8} overflowY="scroll">
+        <TitleBar height="50px"/>
+        <Box 
+          flex={1} 
+          pr={8} 
+          pl={8} 
+          pt={4}
+          pb={4}
+          mt="50px"
+          mb="80px"
+          overflowY="scroll"
+          maxHeight={`calc(100vh - 130px)`}
+        >
           {messages.map((message, index) => (
             <Flex
               key={index}
@@ -115,17 +125,19 @@ function App() {
               <Spinner size="lg" color="blue.500" />
             </Flex>
           )}
-        </Container>
+        </Box>
 
         <Box 
           mt={4} p={4} 
           width="100%"
-          position="sticky"
+          pos="fixed"
           bottom={0}
+          zIndex={999}
+          h="80px"
         >
-          <InputGroup zIndex={999}>
+          <InputGroup>
             <Input
-              placeholder="Type your message..."
+              placeholder="Type your question..."
               value={inputText}
               onChange={handleInputChange}
             />
