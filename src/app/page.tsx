@@ -46,11 +46,12 @@ function App() {
 
     try {
       // Send user's question to the API
-      const response = await fetch('127.0.0.1::8080/query', {
+      const response = await fetch('http://127.0.0.1:8080/query', {
         method: 'POST',
         body: JSON.stringify({ question: inputText }),
         headers: {
-          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/json',
+          'Content-Type': 'text/plain',
         },
       });
     
@@ -60,7 +61,7 @@ function App() {
         // Display API response
         setMessages((prevMessages) => [
           ...prevMessages,
-          { content: data.response, isUser: false },
+          { content: data.answer, isUser: false },
         ]);
       } else {
         console.error('Request failed');
@@ -70,13 +71,13 @@ function App() {
     }
 
     // mocked loading and data returned from server
-    setTimeout(() => {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { content: 'Hello, I am a bot.', isUser: false },
-      ]);
-      setIsLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   setMessages((prevMessages) => [
+    //     ...prevMessages,
+    //     { content: 'Hello, I am a bot.', isUser: false },
+    //   ]);
+    //   setIsLoading(false);
+    // }, 1000);
 
     setInputText('');
   };
