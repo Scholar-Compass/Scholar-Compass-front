@@ -87,14 +87,8 @@ function App() {
           minHeight="100vh"
           direction="column"
         >
-        <NavBar />
-        <Container 
-          flex="1" 
-          pl={4} 
-          pr={4} 
-          mt={8} 
-          overflowY="scroll"
-        >
+        <NavBar/>
+        <Container flex="1" pl={4} pr={4} mt={8} overflowY="scroll">
           {messages.map((message, index) => (
             <Flex
               key={index}
