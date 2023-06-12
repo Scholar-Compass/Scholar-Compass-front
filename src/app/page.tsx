@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import {FaPaperPlane} from 'react-icons/fa';
 import RootLayout from "@/app/layout";
+import NavBar from './components/NavBar';
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -86,18 +87,7 @@ function App() {
           minHeight="100vh"
           direction="column"
         >
-        <Flex
-          p={4}
-          bg="blue.500"
-          color="white"
-          justify="center"
-          align="center"
-          boxSize="full"
-          position="sticky"
-          top={0}
-        >
-          <Text fontSize="2xl">ScholarCompass</Text>
-        </Flex>
+        <NavBar />
         <Container 
           flex="1" 
           pl={4} 
