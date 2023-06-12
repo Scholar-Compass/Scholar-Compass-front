@@ -44,30 +44,30 @@ function App() {
 
     setIsLoading(true);
 
-    // try {
-    //   // Send user's question to the API
-    //   const response = await fetch('/api/ask', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ question: inputText }),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   });
-    //
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //
-    //     // Display API response
-    //     setMessages((prevMessages) => [
-    //       ...prevMessages,
-    //       { content: data.response, isUser: false },
-    //     ]);
-    //   } else {
-    //     console.error('Request failed with status:', response.status);
-    //   }
-    // } catch (error) {
-    //   console.error('Request failed with error:', error);
-    // }
+    try {
+      // Send user's question to the API
+      const response = await fetch('127.0.0.1::8080/query', {
+        method: 'POST',
+        body: JSON.stringify({ question: inputText }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    
+      if (response) {
+        const data = await response.json();
+    
+        // Display API response
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { content: data.response, isUser: false },
+        ]);
+      } else {
+        console.error('Request failed');
+      }
+    } catch (error) {
+      console.error('Request failed with error:', error);
+    }
 
     // mocked loading and data returned from server
     setTimeout(() => {
