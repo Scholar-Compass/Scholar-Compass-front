@@ -50,7 +50,7 @@ function App() {
 
     try {
       // Send user's question to the API
-      const response = await fetch('http://47.244.189.5:8080/query', {
+      const response = await fetch('https://47.244.189.5:8080/query', {
         method: 'POST',
         body: JSON.stringify({ question: inputText }),
         headers: {
