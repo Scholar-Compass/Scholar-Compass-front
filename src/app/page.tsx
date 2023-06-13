@@ -50,7 +50,7 @@ function App() {
 
     try {
       // Send user's question to the API
-      const response = await fetch('https://47.244.189.5:8080/query', {
+      const response = await fetch('https://api.scholarcompass.org/query', {
         method: 'POST',
         body: JSON.stringify({ question: inputText }),
         headers: {
