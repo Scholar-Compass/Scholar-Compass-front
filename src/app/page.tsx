@@ -46,6 +46,7 @@ function App() {
       { content: inputText, isUser: true },
     ]);
 
+    setInputText('');
     setIsLoading(true);
 
     try {
@@ -74,8 +75,6 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-
-    setInputText('');
   };
 
   return (
