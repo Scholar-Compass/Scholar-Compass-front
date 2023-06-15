@@ -8,13 +8,13 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Spinner,
   Icon,
 } from '@chakra-ui/react';
 import {FaPaperPlane} from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
 import Text from '@/components/Text';
 import { getBotResponse } from '@/service/query';
+import LoadingDots from '@/components/LoadingDots';
 
 const systemMessage = 
 `Hi 亲爱的同学们：
@@ -121,8 +121,8 @@ function App() {
         ))}
 
         {isLoading && (
-          <Flex justify="flex-start" mt={4}>
-            <Spinner size="lg" color="blue.500" />
+          <Flex justify="flex-start" mt={4} p={3}>
+            <LoadingDots />
           </Flex>
         )}
       </Box>
