@@ -14,6 +14,7 @@ import {
 import {FaPaperPlane} from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
 import Text from '@/components/Text';
+import { getBotResponse } from '@/service/query';
 
 const systemMessage = 
 `Hi 亲爱的同学们：
@@ -77,25 +78,11 @@ function App() {
 
     try {
       // Send user's question to the API
-      // const response = await fetch('https://api.scholarcompass.org/query', {
-      //   method: 'POST',
-      //   body: JSON.stringify({ question: inputText }),
-      //   headers: {
-      //     'Content-Type': 'text/plain',
-      //   },
-      // });
-    
-      // if (response) {
-      //   const data = await response.json();
-    
-      //   // Display API response
-      //   setMessages((prevMessages) => [
-      //     ...prevMessages,
-      //     { content: data.answer, isUser: false },
-      //   ]);
-      // } else {
-      //   console.error('Request failed');
-      // }
+      const res = await getBotResponse(inputText);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { content: res.answer, isUser: false },
+      ]);
     } catch (error) {
       console.error('Request failed with error:', error);
     } finally {
