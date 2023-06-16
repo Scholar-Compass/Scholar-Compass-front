@@ -15,6 +15,7 @@ import NavBar from '@/components/NavBar';
 import Text from '@/components/Text';
 import { getBotResponse } from '@/service/query';
 import LoadingDots from '@/components/LoadingDots';
+import ScrollBox from '@/components/ScrollBox';
 
 const systemMessage = 
 `Hi 亲爱的同学们：
@@ -90,13 +91,12 @@ function App() {
   return (
     <Flex minH="100vh" flexDir="column">
       <NavBar h="60px"/>
-      <Box
+      <ScrollBox
         mt="60px"
         mb="70px"
         flex={1}
         px={8} 
         py={4}
-        overflowY="auto"
       >
         {messages.map((message, index) => (
           <Flex
@@ -125,7 +125,7 @@ function App() {
             <LoadingDots />
           </Flex>
         )}
-      </Box>
+      </ScrollBox>
       <Flex 
         p={4} 
         pos="fixed"
