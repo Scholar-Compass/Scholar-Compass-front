@@ -11,7 +11,7 @@ const NavBar = (
       justify="center"
       align="center"
       width="100%"
-      pos="sticky"
+      pos="fixed"
       top={0}
       zIndex={999}
       {...props}

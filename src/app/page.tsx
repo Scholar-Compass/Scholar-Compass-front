@@ -89,8 +89,10 @@ function App() {
 
   return (
     <Flex minH="100vh" flexDir="column">
-      <NavBar/>
+      <NavBar h="60px"/>
       <Box
+        mt="60px"
+        mb="70px"
         flex={1}
         px={8} 
         py={4}
@@ -100,7 +102,7 @@ function App() {
           <Flex
             key={index}
             justify={message.isUser ? 'flex-end' : 'flex-start'}
-            mt={2}
+            mt={index === 0 ? 0 : 3}
             wordBreak={"break-word"}
           > 
             <Text
@@ -110,7 +112,8 @@ function App() {
               borderRadius="lg"
               boxShadow="md"
               whiteSpace="pre-wrap"
-              maxWidth="70%"
+              maxWidth={["95%", "80%", "70%"]}
+              fontSize={["sm", "md", "lg"]}
             >  
               {message.content}
             </Text>
@@ -123,12 +126,15 @@ function App() {
           </Flex>
         )}
       </Box>
-      <Box 
+      <Flex 
         p={4} 
-        pos="sticky"
+        pos="fixed"
+        width="100%"
         bottom={0}
         zIndex={999}
         bg="white"
+        h="75px"
+        alignItems="center"
       >
         <InputGroup>
           <Input
@@ -146,7 +152,7 @@ function App() {
             />
           </InputRightElement>
         </InputGroup>
-      </Box>
+      </Flex>
     </Flex>
   );
 }
