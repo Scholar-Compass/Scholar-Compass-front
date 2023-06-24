@@ -1,5 +1,5 @@
-import { Box, BoxProps, HStack, keyframes } from "@chakra-ui/react";
-import { css } from "@emotion/react";
+import { Box, BoxProps, HStack, keyframes } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 const dotAnimation = keyframes`
   0% {
@@ -17,7 +17,10 @@ const animationDelayStyle = (delay: number) => css`
   animation-delay: ${delay}s;
 `;
 
-const LoadingDot = ({animationDelay = 0, ...props}: {animationDelay?: number} & BoxProps ) => {
+const LoadingDot = ({
+  animationDelay = 0,
+  ...props
+}: { animationDelay?: number } & BoxProps) => {
   return (
     <Box
       as="span"
@@ -31,16 +34,16 @@ const LoadingDot = ({animationDelay = 0, ...props}: {animationDelay?: number} & 
       {...props}
     />
   );
-}
+};
 
 const LoadingDots = () => {
   return (
-    <HStack spacing={6} >
+    <HStack spacing={6}>
       <LoadingDot />
-      <LoadingDot animationDelay={0.25} bgColor="gray.400"/>
-      <LoadingDot animationDelay={0.5} bgColor="gray.500"/>
+      <LoadingDot animationDelay={0.25} bgColor="gray.400" />
+      <LoadingDot animationDelay={0.5} bgColor="gray.500" />
     </HStack>
-  )
+  );
 };
 
 export default LoadingDots;

@@ -1,7 +1,7 @@
 // app/layout.tsx
-"use client";
-import { ChakraProvider, Flex } from "@chakra-ui/react";
-import { CacheProvider } from '@chakra-ui/next-js'
+'use client';
+import { ChakraProvider } from '@chakra-ui/react';
+import { CacheProvider } from '@chakra-ui/next-js';
 
 export default function RootLayout({
   children,
@@ -12,9 +12,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CacheProvider>
-          <ChakraProvider>
-              {children}
-          </ChakraProvider>
+          <ChakraProvider>{children}</ChakraProvider>
         </CacheProvider>
       </body>
     </html>

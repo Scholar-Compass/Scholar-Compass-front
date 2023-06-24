@@ -1,8 +1,6 @@
-import { BoxProps, Flex, Text } from "@chakra-ui/react";
+import { BoxProps, Flex, Text } from '@chakra-ui/react';
 
-const NavBar = (
-  props: BoxProps
-) => {
+const NavBar = (props: BoxProps) => {
   return (
     <Flex
       p={4}
@@ -16,11 +14,9 @@ const NavBar = (
       zIndex={999}
       {...props}
     >
-      <Text fontSize="2xl">
-        Scholar Compass
-      </Text>
+      <Text fontSize="2xl">Scholar Compass</Text>
     </Flex>
-  )
-}
+  );
+};
 
 export default NavBar;

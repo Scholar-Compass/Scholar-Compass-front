@@ -1,24 +1,22 @@
 // app/page.tsx
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import {
-  Box,
   Flex,
   Input,
   InputGroup,
   InputRightElement,
   Icon,
 } from '@chakra-ui/react';
-import {FaPaperPlane} from 'react-icons/fa';
+import { FaPaperPlane } from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
 import Text from '@/components/Text';
 import { getBotResponse } from '@/service/query';
 import LoadingDots from '@/components/LoadingDots';
 import ScrollBox from '@/components/ScrollBox';
 
-const systemMessage = 
-`Hi 亲爱的同学们：
+const systemMessage = `Hi 亲爱的同学们：
 欢迎使用 **ScholarCompass AI 对话机器人** (beta)～
 你可以用以下问题开启对话：
 
@@ -31,7 +29,7 @@ const systemMessage =
 - **学业**（强势专业、竞赛、转专业政策等）
 - **生活**（运动、食堂、社团、学校周边等）
 
-我们的数据来自在校学生原创内容，可能与客观情况有所偏差，请汇总多方信息后再做志愿填报的决定。希望我们的产品对你有所帮助～`
+我们的数据来自在校学生原创内容，可能与客观情况有所偏差，请汇总多方信息后再做志愿填报的决定。希望我们的产品对你有所帮助～`;
 
 function App() {
   interface Message {
@@ -43,7 +41,7 @@ function App() {
     {
       content: systemMessage,
       isUser: false,
-    }
+    },
   ];
 
   const [inputText, setInputText] = useState('');
@@ -66,7 +64,7 @@ function App() {
     }
 
     // Display user's input message
-    setMessages((prevMessages) => [
+    setMessages(prevMessages => [
       ...prevMessages,
       { content: inputText, isUser: true },
     ]);
@@ -77,7 +75,7 @@ function App() {
     try {
       // Send user's question to the API
       const res = await getBotResponse(inputText);
-      setMessages((prevMessages) => [
+      setMessages(prevMessages => [
         ...prevMessages,
         { content: res.answer, isUser: false },
       ]);
@@ -90,21 +88,15 @@ function App() {
 
   return (
     <Flex minH="100vh" flexDir="column">
-      <NavBar h="60px"/>
-      <ScrollBox
-        mt="60px"
-        mb="70px"
-        flex={1}
-        px={8} 
-        py={4}
-      >
+      <NavBar h="60px" />
+      <ScrollBox mt="60px" mb="70px" flex={1} px={8} py={4}>
         {messages.map((message, index) => (
           <Flex
             key={index}
             justify={message.isUser ? 'flex-end' : 'flex-start'}
             mt={index === 0 ? 0 : 3}
-            wordBreak={"break-word"}
-          > 
+            wordBreak={'break-word'}
+          >
             <Text
               bg={message.isUser ? 'blue.500' : 'gray.200'}
               color={message.isUser ? 'white' : 'black'}
@@ -112,9 +104,9 @@ function App() {
               borderRadius="lg"
               boxShadow="md"
               whiteSpace="pre-wrap"
-              maxWidth={["95%", "80%", "70%"]}
-              fontSize={["sm", "md", "lg"]}
-            >  
+              maxWidth={['95%', '80%', '70%']}
+              fontSize={['sm', 'md', 'lg']}
+            >
               {message.content}
             </Text>
           </Flex>
@@ -126,8 +118,8 @@ function App() {
           </Flex>
         )}
       </ScrollBox>
-      <Flex 
-        p={4} 
+      <Flex
+        p={4}
         pos="fixed"
         width="100%"
         bottom={0}
