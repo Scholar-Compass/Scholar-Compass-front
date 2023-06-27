@@ -1,6 +1,6 @@
 import { Flex, Stack, StackProps } from '@chakra-ui/react';
 import TypeWriter from '@/components/TypeWriter';
-import Markdown from './Markdown';
+import Markdown from '@/components/Markdown';
 
 export interface Message {
   content: string;

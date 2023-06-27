@@ -1,6 +1,6 @@
 import { Text as ChakraText, keyframes } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import Markdown from './Markdown';
+import Markdown from '@/components/Markdown';
 
 const blink = keyframes`
   0% {
