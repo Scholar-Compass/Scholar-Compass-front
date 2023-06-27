@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex } from '@chakra-ui/react';
+import { Flex, Stack, StackProps } from '@chakra-ui/react';
 import Text from '@/components/Text';
 
 export interface Message {
@@ -6,7 +6,10 @@ export interface Message {
   from?: 'system' | 'user' | 'bot';
 }
 
-const MessageBox = ({ message, ...props }: { message: Message } & BoxProps) => {
+const MessageBox = ({
+  message,
+  ...props
+}: { message: Message } & StackProps) => {
   const isUser = message.from === 'user';
   const isSystem = message.from === 'system';
   return (
@@ -15,7 +18,7 @@ const MessageBox = ({ message, ...props }: { message: Message } & BoxProps) => {
       wordBreak={'break-word'}
       {...props}
     >
-      <Box
+      <Stack
         style={{ overflow: 'hidden' }}
         bg={isUser ? 'blue.500' : 'gray.200'}
         color={isUser ? 'white' : 'black'}
@@ -25,9 +28,10 @@ const MessageBox = ({ message, ...props }: { message: Message } & BoxProps) => {
         whiteSpace="pre-wrap"
         maxWidth={['95%', '80%', '70%']}
         fontSize={['sm', 'md', 'lg']}
+        spacing={[2, 3, 4]}
       >
         <Text typeWriting={!isSystem}>{message.content}</Text>
-      </Box>
+      </Stack>
     </Flex>
   );
 };
