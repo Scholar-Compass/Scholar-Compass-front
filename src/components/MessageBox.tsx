@@ -1,5 +1,6 @@
 import { Flex, Stack, StackProps } from '@chakra-ui/react';
-import Text from '@/components/Text';
+import TypeWriter from '@/components/TypeWriter';
+import Markdown from './Markdown';
 
 export interface Message {
   content: string;
@@ -30,7 +31,11 @@ const MessageBox = ({
         fontSize={['sm', 'md', 'lg']}
         spacing={[2, 3, 4]}
       >
-        <Text typeWriting={!isSystem}>{message.content}</Text>
+        {isSystem ? (
+          <Markdown>{message.content}</Markdown>
+        ) : (
+          <TypeWriter>{message.content}</TypeWriter>
+        )}
       </Stack>
     </Flex>
   );
