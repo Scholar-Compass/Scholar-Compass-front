@@ -17,7 +17,7 @@ import LoadingDots from '@/components/LoadingDots';
 import ScrollBox from '@/components/ScrollBox';
 
 const systemMessage = `Hi 亲爱的同学们：
-欢迎使用 **ScholarCompass AI 对话机器人** (beta)～
+欢迎使用 **ScholarCompass AI 对话机器人** ～
 
 你可以用以下问题开启对话：
 **综合类：**
@@ -81,9 +81,11 @@ function App() {
     }
   };
 
+  const navBarH = [50, 55, 60].map(h => h + 'px');
+
   return (
     <Flex minH="100vh" flexDir="column">
-      <NavBar h="60px" />
+      <NavBar h={navBarH} />
       <ScrollBox mt="60px" mb="70px" flex={1} px={8} py={4}>
         {messages.map((message, index) => (
           <MessageBox key={index} mt={index === 0 ? 0 : 3} message={message} />

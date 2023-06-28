@@ -14,7 +14,9 @@ const NavBar = (props: BoxProps) => {
       zIndex={999}
       {...props}
     >
-      <Text fontSize="2xl">Scholar Compass</Text>
+      <Text fontWeight="bold" fontSize={['xl', '2xl', '2xl']}>
+        Scholar Compass
+      </Text>
     </Flex>
   );
 };

@@ -16,8 +16,8 @@ const MemorizedMarkdown = memo(ReactMarkdown, (prevProps, nextProps) => {
 });
 
 const components: Components = {
-  ul: ({ children }) => <UnorderedList>{children}</UnorderedList>,
-  ol: ({ children }) => <OrderedList>{children}</OrderedList>,
+  ul: ({ children }) => <UnorderedList px={2}>{children}</UnorderedList>,
+  ol: ({ children }) => <OrderedList px={2}>{children}</OrderedList>,
   // remove the extra p tag around children
   li: ({ children }: PropsWithChildren) => {
     if (Array.isArray(children)) {
