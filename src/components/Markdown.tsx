@@ -9,7 +9,7 @@ import {
 import { BiLinkExternal } from 'react-icons/bi';
 import ReactMarkdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { PropsWithChildren, memo } from 'react';
+import { memo } from 'react';
 
 const MemorizedMarkdown = memo(ReactMarkdown, (prevProps, nextProps) => {
   return prevProps.children === nextProps.children;
@@ -19,7 +19,7 @@ const components: Components = {
   ul: ({ children }) => <UnorderedList px={2}>{children}</UnorderedList>,
   ol: ({ children }) => <OrderedList px={2}>{children}</OrderedList>,
   // remove the extra p tag around children
-  li: ({ children }: PropsWithChildren) => {
+  li: ({ children }: { children: React.ReactNode }) => {
     if (Array.isArray(children)) {
       for (const child of children) {
         if (child.type === 'p') {
