@@ -6,7 +6,7 @@ const theme = extendTheme({
     useSystemColorMode: false,
   },
   colors: {
-    brand: {
+    default: {
       light: 'white',
       dark: '#363c46',
     },

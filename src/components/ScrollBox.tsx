@@ -21,7 +21,7 @@ const ScrollBox = ({ children, ...props }: ScrollBoxProps) => {
     <Stack
       ref={scrollAreaRef}
       overflowY="auto"
-      bgColor={useColorModeValue('brand.light', 'brand.dark')}
+      bgColor={useColorModeValue('default.light', 'default.dark')}
       spacing={[3, 4, 5]}
       {...props}
     >
