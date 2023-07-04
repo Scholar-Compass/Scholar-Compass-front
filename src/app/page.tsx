@@ -9,6 +9,7 @@ import {
   InputRightElement,
   Icon,
   useColorModeValue,
+  IconButton,
 } from '@chakra-ui/react';
 import { FaPaperPlane } from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
@@ -109,12 +110,17 @@ function App() {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             bgColor={useColorModeValue('white', 'gray.700')}
+            isDisabled={isLoading}
           />
           <InputRightElement>
-            <Icon
-              as={FaPaperPlane}
+            <IconButton
+              icon={<Icon as={FaPaperPlane} />}
+              aria-label="Send message"
               color="blue.500"
               cursor="pointer"
+              isDisabled={isLoading}
+              variant="ghost"
+              _hover={{ bgColor: 'transparent', color: 'blue.300' }}
               onClick={handleSendMessage}
             />
           </InputRightElement>
