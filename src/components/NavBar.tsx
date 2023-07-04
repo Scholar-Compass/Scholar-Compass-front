@@ -40,7 +40,7 @@ const NavBar = (props: BoxProps) => {
           _hover={{
             transform: 'scale(1.2)',
           }}
-          _focus={{
+          _active={{
             bgColor: 'transparent',
           }}
           size={['md', 'md', 'lg']}
