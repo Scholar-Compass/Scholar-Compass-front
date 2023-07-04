@@ -1,6 +1,14 @@
-import { BoxProps, Flex, Text } from '@chakra-ui/react';
+import {
+  BoxProps,
+  IconButton,
+  Flex,
+  Text,
+  useColorMode,
+} from '@chakra-ui/react';
+import { FaRegMoon, FaSun } from 'react-icons/fa';
 
 const NavBar = (props: BoxProps) => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
       p={4}
@@ -14,9 +22,30 @@ const NavBar = (props: BoxProps) => {
       zIndex={999}
       {...props}
     >
-      <Text fontWeight="bold" fontSize={['xl', '2xl', '2xl']}>
+      <Text
+        textAlign="center"
+        fontWeight="bold"
+        fontSize={['xl', '2xl', '2xl']}
+      >
         Scholar Compass
       </Text>
+      <Flex pos="absolute" right={2}>
+        <IconButton
+          aria-label="Toggle color mode"
+          icon={colorMode === 'light' ? <FaRegMoon /> : <FaSun />}
+          onClick={toggleColorMode}
+          variant="ghost"
+          color="current"
+          transition="transform 0.1s"
+          _hover={{
+            transform: 'scale(1.2)',
+          }}
+          _focus={{
+            bgColor: 'transparent',
+          }}
+          size={['md', 'md', 'lg']}
+        />
+      </Flex>
     </Flex>
   );
 };

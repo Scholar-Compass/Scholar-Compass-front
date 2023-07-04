@@ -21,7 +21,7 @@ const MessageBox = ({
     >
       <Stack
         style={{ overflow: 'hidden' }}
-        bg={isUser ? 'blue.500' : 'gray.200'}
+        bg={isUser ? 'teal.500' : 'gray.200'}
         color={isUser ? 'white' : 'black'}
         p={3}
         borderRadius="lg"

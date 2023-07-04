@@ -1,7 +1,8 @@
 // app/layout.tsx
 'use client';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { CacheProvider } from '@chakra-ui/next-js';
+import theme from '@/theme';
 
 export default function RootLayout({
   children,
@@ -11,8 +12,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <CacheProvider>
-          <ChakraProvider>{children}</ChakraProvider>
+          <ChakraProvider theme={theme}>{children}</ChakraProvider>
         </CacheProvider>
       </body>
     </html>

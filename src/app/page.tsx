@@ -8,6 +8,7 @@ import {
   InputGroup,
   InputRightElement,
   Icon,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { FaPaperPlane } from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
@@ -36,6 +37,10 @@ function App() {
     {
       content: systemMessage,
       from: 'system',
+    },
+    {
+      content: '目前支持哪些学校？',
+      from: 'user',
     },
   ];
 
@@ -103,9 +108,9 @@ function App() {
         width="100%"
         bottom={0}
         zIndex={999}
-        bg="white"
         h="75px"
         alignItems="center"
+        bgColor={useColorModeValue('brand.light', 'brand.dark')}
       >
         <InputGroup>
           <Input
@@ -113,6 +118,7 @@ function App() {
             value={inputText}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
+            bgColor={useColorModeValue('white', 'gray.700')}
           />
           <InputRightElement>
             <Icon

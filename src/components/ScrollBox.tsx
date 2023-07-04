@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@chakra-ui/react';
+import { Box, BoxProps, useColorModeValue } from '@chakra-ui/react';
 import { useEffect, useRef } from 'react';
 import useResizeObserver from 'use-resize-observer';
 
@@ -18,7 +18,12 @@ const ScrollBox = ({ children, ...props }: ScrollBoxProps) => {
   }, [height]);
 
   return (
-    <Box ref={scrollAreaRef} overflowY="auto" {...props}>
+    <Box
+      ref={scrollAreaRef}
+      overflowY="auto"
+      bgColor={useColorModeValue('brand.light', 'brand.dark')}
+      {...props}
+    >
       {children}
       <Box ref={bottomRef} />
     </Box>
