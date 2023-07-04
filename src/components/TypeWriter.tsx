@@ -1,4 +1,5 @@
-import { Text as ChakraText, keyframes } from '@chakra-ui/react';
+import { keyframes } from '@emotion/react';
+import { Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import Markdown from '@/components/Markdown';
 
@@ -14,15 +15,15 @@ const blink = keyframes`
   }
 `;
 
-const Cursor = () => {
+export const BlinkCursor = () => {
   return (
-    <ChakraText
+    <Text
       as="span"
       animation={`${blink} 0.5s infinite`}
       _before={{ content: '"\\00a0"' }}
     >
-      |
-    </ChakraText>
+      ▍
+    </Text>
   );
 };
 
@@ -33,17 +34,16 @@ type TypeWritingProps = {
 
 const TypeWriter = ({ children, speed = 10 }: TypeWritingProps) => {
   const [text, setText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
   const characters = children.split('');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (characters.length > 0) {
-        setText(prevText => prevText + characters.shift());
-      } else {
-        setShowCursor(false);
+      if (characters.length == 0) {
         clearInterval(interval);
+        return;
       }
+
+      setText(prevText => prevText + characters.shift());
     }, speed);
 
     return () => {

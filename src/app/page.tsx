@@ -12,9 +12,8 @@ import {
 } from '@chakra-ui/react';
 import { FaPaperPlane } from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
-import MessageBox, { Message } from '@/components/MessageBox';
+import Message, { MessageMask, MessageType } from '@/components/Message';
 import { getBotResponse } from '@/service/query';
-import LoadingDots from '@/components/LoadingDots';
 import ScrollBox from '@/components/ScrollBox';
 
 const systemMessage = `Hi 亲爱的同学们：
@@ -33,20 +32,16 @@ const systemMessage = `Hi 亲爱的同学们：
 我们的数据来自在校学生原创内容，可能与客观情况有所偏差，请汇总多方信息后再做志愿填报的决定。希望我们的产品对你有所帮助～`;
 
 function App() {
-  const initalMessages: Message[] = [
+  const initalMessages: MessageType[] = [
     {
       content: systemMessage,
       from: 'system',
-    },
-    {
-      content: '目前支持哪些学校？',
-      from: 'user',
     },
   ];
 
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [messages, setMessages] = useState<Message[]>(initalMessages);
+  const [messages, setMessages] = useState<MessageType[]>(initalMessages);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value);
@@ -93,14 +88,9 @@ function App() {
       <NavBar h={navBarH} />
       <ScrollBox mt="60px" mb="70px" flex={1} px={8} py={4}>
         {messages.map((message, index) => (
-          <MessageBox key={index} mt={index === 0 ? 0 : 3} message={message} />
+          <Message key={index} {...message} />
         ))}
-
-        {isLoading && (
-          <Flex justify="flex-start" mt={4} p={3}>
-            <LoadingDots />
-          </Flex>
-        )}
+        {isLoading && <MessageMask />}
       </ScrollBox>
       <Flex
         p={4}
@@ -110,7 +100,7 @@ function App() {
         zIndex={999}
         h="75px"
         alignItems="center"
-        bgColor={useColorModeValue('brand.light', 'brand.dark')}
+        bgColor={useColorModeValue('default.light', 'default.dark')}
       >
         <InputGroup>
           <Input
