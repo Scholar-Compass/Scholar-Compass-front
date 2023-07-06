@@ -1,5 +1,10 @@
 import { BoxProps, Flex, Stack } from '@chakra-ui/react';
-import TypeWriter, { BlinkCursor } from '@/components/TypeWriter';
+import TypeWriter, {
+  opDelete,
+  opDeleteAll,
+  opType,
+  opWait,
+} from '@/components/TypeWriter';
 import Markdown from '@/components/Markdown';
 import { PropsWithChildren } from 'react';
 
@@ -46,7 +51,7 @@ const Message = ({ content, from, ...props }: MessageType & BoxProps) => {
       {isSystem ? (
         <Markdown>{content}</Markdown>
       ) : (
-        <TypeWriter>{content}</TypeWriter>
+        <TypeWriter operations={[opType(content)]} />
       )}
     </MessageBox>
   );
@@ -54,7 +59,20 @@ const Message = ({ content, from, ...props }: MessageType & BoxProps) => {
 
 export const MessageMask = ({ ...props }: BoxProps) => (
   <MessageBox {...props}>
-    <BlinkCursor />
+    <TypeWriter
+      speed={100}
+      showCursor={true}
+      operations={[
+        opWait(500),
+        opType('加载中...'),
+        opWait(500),
+        opDelete(3),
+        opType('...'),
+        opWait(500),
+        opDeleteAll(),
+        opType('啦啦啦啦啦啦啦啦....'),
+      ]}
+    />
   </MessageBox>
 );
 
