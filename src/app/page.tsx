@@ -83,11 +83,12 @@ function App() {
   };
 
   const navBarH = [50, 55, 60].map(h => h + 'px');
+  const inputH = '75px';
 
   return (
     <Flex minH="100vh" flexDir="column">
       <NavBar h={navBarH} />
-      <ScrollBox mt="60px" mb="70px" flex={1} px={8} py={4}>
+      <ScrollBox mt={navBarH} mb={inputH} flex={1} px={8} py={4}>
         {messages.map((message, index) => (
           <Message key={index} {...message} />
         ))}
@@ -99,7 +100,7 @@ function App() {
         width="100%"
         bottom={0}
         zIndex={999}
-        h="75px"
+        h={inputH}
         alignItems="center"
         bgColor={useColorModeValue('default.light', 'default.dark')}
       >
@@ -111,6 +112,7 @@ function App() {
             onKeyDown={handleKeyDown}
             bgColor={useColorModeValue('white', 'gray.700')}
             isDisabled={isLoading}
+            _placeholder={{ color: useColorModeValue('gray.500', 'gray.300') }}
           />
           <InputRightElement>
             <IconButton
