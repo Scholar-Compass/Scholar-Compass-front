@@ -60,17 +60,19 @@ const Message = ({ content, from, ...props }: MessageType & BoxProps) => {
 export const MessageMask = ({ ...props }: BoxProps) => (
   <MessageBox {...props}>
     <TypeWriter
-      speed={100}
+      speed={120}
       showCursor={true}
       operations={[
         opWait(500),
-        opType('加载中...'),
-        opWait(500),
-        opDelete(3),
-        opType('...'),
+        opType('不要着急，答案马上出来...'),
+        opWait(1500),
+        opDelete(9),
+        opType('再等会儿哈'),
+        opWait(1500),
+        opDeleteAll(),
+        opType('啦啦啦啦啦啦啦....'),
         opWait(500),
         opDeleteAll(),
-        opType('啦啦啦啦啦啦啦啦....'),
       ]}
     />
   </MessageBox>

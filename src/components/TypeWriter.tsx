@@ -48,8 +48,13 @@ const TypeWriter = ({
     if (index >= operations.length) return;
 
     const operation = operations[index];
-    let interval = speed;
-    console.log(operation);
+
+    if (operation.type === OpType.WAIT) {
+      const timer = setTimeout(() => {
+        setIndex(prevIndex => prevIndex + 1);
+      }, operation.time);
+      return () => clearTimeout(timer);
+    }
 
     const timer = setTimeout(() => {
       switch (operation.type) {
@@ -63,10 +68,6 @@ const TypeWriter = ({
             operation.text = operation.text.slice(1);
             return newText;
           });
-          break;
-        case OpType.WAIT:
-          interval = operation.time;
-          setIndex(prevIndex => prevIndex + 1);
           break;
         case OpType.DELETE:
           if (operation.length <= 0) {
@@ -86,7 +87,7 @@ const TypeWriter = ({
           setText(prevText => prevText.slice(0, -1));
           break;
       }
-    }, interval);
+    }, speed);
 
     return () => clearTimeout(timer);
   }, [text, index, operations, speed]);
