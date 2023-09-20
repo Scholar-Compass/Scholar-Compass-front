@@ -1,30 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Scholar Compass - Personalized AI-Powered University Selection Chat Assistant
 
-## Getting Started
+Welcome to Scholar Compass AI Chatbot, your personalized assistant for university selection powered by artificial intelligence. Scholar Compass is designed to help you make informed decisions about your university choices. Whether you have general queries about majors and universities or need specific information about universities and aspects like academics or campus life, Scholar Compass is here to assist you.
 
-First, run the development server:
+## Features
+- **Personalized Recommendations**: Ask questions about your strengths and interests, and Scholar Compass will recommend majors and universities tailored to you.
 
-```bash
-pnpm dev
-```
+- **Information Retrieval**: Get detailed information about universities and specific aspects like academics and campus life.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Multilingual Support**: Scholar Compass supports both English and Chinese languages for a wider range of users.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **University Database**: Access a growing database of universities, continuously updated with data contributed by current students.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Conversational Examples
+**General Query**
 
-## Learn More
+- **User**: "I am a student who is good at math and physics. Can you recommend some majors and universities?"
 
-To learn more about Next.js, take a look at the following resources:
+**Information Retrieval**
+- **User**: "Beijing University + Academic"
+- **User**: "University of Hong Kong + Campus Life"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Supported Universities**
+- **User**: "Which universities are currently supported?"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech Stack
+Scholar Compass uses the following technologies and services:
+- React
+- Next.js
+- Chakra UI
+- OpenAI API
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Running Scholar Compass locally
+1. Install the required dependencies:
+    ```bash
+    pnpm install
+    ```
+2. Start the development server:
+    ```bash
+    pnpm dev
+    ```
