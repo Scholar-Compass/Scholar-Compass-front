@@ -41,6 +41,9 @@ dependencies:
   framer-motion:
     specifier: ^10.12.16
     version: registry.npmmirror.com/framer-motion@10.12.16(react-dom@18.2.0)(react@18.2.0)
+  jotai:
+    specifier: ^2.4.2
+    version: registry.npmmirror.com/jotai@2.4.2(@types/react@18.2.11)(react@18.2.0)
   next:
     specifier: 13.4.5
     version: registry.npmmirror.com/next@13.4.5(react-dom@18.2.0)(react@18.2.0)
@@ -1544,6 +1547,7 @@ packages:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@emotion/memoize/-/memoize-0.7.4.tgz}
     name: '@emotion/memoize'
     version: 0.7.4
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -4070,6 +4074,25 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/isexe/-/isexe-2.0.0.tgz}
     name: isexe
     version: 2.0.0
+
+  registry.npmmirror.com/jotai@2.4.2(@types/react@18.2.11)(react@18.2.0):
+    resolution: {integrity: sha512-90jXVOd9h6gi5JXk558M+wnJfaaVN2WegcNOCfiFbWboNaDl6DkRgiY/K1oeqTfYJmq8yM7XPsL99LAvcOPqhw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/jotai/-/jotai-2.4.2.tgz}
+    id: registry.npmmirror.com/jotai/2.4.2
+    name: jotai
+    version: 2.4.2
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react@18.2.11
+      react: registry.npmmirror.com/react@18.2.0
+    dev: false
 
   registry.npmmirror.com/js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-tokens/-/js-tokens-4.0.0.tgz}

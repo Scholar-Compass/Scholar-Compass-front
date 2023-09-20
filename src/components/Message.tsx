@@ -7,6 +7,8 @@ import TypeWriter, {
 } from '@/components/TypeWriter';
 import Markdown from '@/components/Markdown';
 import { PropsWithChildren } from 'react';
+import { useAtomValue } from 'jotai';
+import { languageAtom } from '@/utils/atom';
 
 export type MessageType = {
   content: string;
@@ -57,25 +59,41 @@ const Message = ({ content, from, ...props }: MessageType & BoxProps) => {
   );
 };
 
-export const MessageMask = ({ ...props }: BoxProps) => (
-  <MessageBox {...props}>
-    <TypeWriter
-      speed={120}
-      showCursor={true}
-      operations={[
-        opWait(500),
-        opType('不要着急，答案马上出来...'),
-        opWait(1500),
-        opDelete(9),
-        opType('再等会儿哈'),
-        opWait(1500),
-        opDeleteAll(),
-        opType('啦啦啦啦啦啦啦....'),
-        opWait(500),
-        opDeleteAll(),
-      ]}
-    />
-  </MessageBox>
-);
+export const MessageMask = ({ ...props }: BoxProps) => {
+  const language = useAtomValue(languageAtom);
+  let operations;
+  if (language === 'zh') {
+    operations = [
+      opWait(500),
+      opType('不要着急，答案马上出来...'),
+      opWait(1500),
+      opDelete(9),
+      opType('再等会儿哈'),
+      opWait(1500),
+      opDeleteAll(),
+      opType('啦啦啦啦啦啦啦....'),
+      opWait(500),
+      opDeleteAll(),
+    ];
+  } else {
+    operations = [
+      opWait(500),
+      opType('Loading... Please wait...'),
+      opWait(1500),
+      opDelete(14),
+      opType('Just a moment...'),
+      opWait(1500),
+      opDeleteAll(),
+      opType('Comming....'),
+      opWait(500),
+      opDeleteAll(),
+    ];
+  }
+  return (
+    <MessageBox {...props}>
+      <TypeWriter speed={120} showCursor={true} operations={operations} />
+    </MessageBox>
+  );
+};
 
 export default Message;
