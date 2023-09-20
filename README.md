@@ -2,6 +2,9 @@
 
 Welcome to Scholar Compass AI Chatbot, your personalized assistant for university selection powered by artificial intelligence. Scholar Compass is designed to help you make informed decisions about your university choices. Whether you have general queries about majors and universities or need specific information about universities and aspects like academics or campus life, Scholar Compass is here to assist you.
 
+![test](https://github.com/Scholar-Compass/Scholar-Compass-front/assets/41807109/5f27e7fc-21b6-4ad0-80c4-1b187a904868)
+
+
 ## Features
 - **Personalized Recommendations**: Ask questions about your strengths and interests, and Scholar Compass will recommend majors and universities tailored to you.
 
