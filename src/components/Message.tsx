@@ -84,7 +84,7 @@ export const MessageMask = ({ ...props }: BoxProps) => {
       opType('Just a moment...'),
       opWait(1500),
       opDeleteAll(),
-      opType('Comming....'),
+      opType('Coming....'),
       opWait(500),
       opDeleteAll(),
     ];
