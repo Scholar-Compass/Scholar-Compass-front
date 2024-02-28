@@ -23,7 +23,7 @@ import { systemMessage } from '@/utils/strings';
 
 function App() {
   const language = useAtomValue(languageAtom);
-  const initalMessage: MessageType = {
+  const initialMessage: MessageType = {
     content: systemMessage[language],
     from: 'system',
   };
@@ -77,7 +77,7 @@ function App() {
     <Flex minH="100vh" flexDir="column">
       <NavBar h={navBarH} />
       <ScrollBox mt={navBarH} mb={inputH} flex={1} px={8} py={4}>
-        <Message {...initalMessage}>{systemMessage[language]}</Message>
+        <Message {...initialMessage}>{systemMessage[language]}</Message>
         {messages?.map((message, index) => (
           <Message key={index} {...message} />
         ))}
