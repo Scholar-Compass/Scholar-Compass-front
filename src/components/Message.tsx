@@ -1,10 +1,11 @@
 import { BoxProps, Flex, Stack } from '@chakra-ui/react';
-import TypeWriter, {
+import TypeWriter from '@/components/TypeWriter';
+import {
   opDelete,
   opDeleteAll,
   opType,
   opWait,
-} from '@/components/TypeWriter';
+} from '@/components/TypeWriterOperation';
 import Markdown from '@/components/Markdown';
 import { PropsWithChildren } from 'react';
 import { useAtomValue } from 'jotai';
