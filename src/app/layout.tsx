@@ -1,5 +1,6 @@
-// app/layout.tsx
-'use client';
+// https://vitejs.dev/guide/backend-integration.html
+import 'vite/modulepreload-polyfill';
+
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { Provider as JotaiProvider } from 'jotai';
 import { StrictMode } from 'react';
