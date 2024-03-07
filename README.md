@@ -48,4 +48,4 @@ Scholar Compass uses the following technologies and services:
    ```bash
    pnpm dev
    ```
-   We should set the env variable `$NEXT_PUBLIC_API_END_POINT` to `https://api.scholarcompass.org` in production.
+   We should set the env variable `$VITE_PUBLIC_API_END_POINT` to `https://api.scholarcompass.org` in production.

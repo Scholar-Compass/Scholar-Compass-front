@@ -2,21 +2,20 @@
 'use client';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { Provider as JotaiProvider } from 'jotai';
-import theme from '@/theme';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <JotaiProvider>
-          <ChakraProvider theme={theme}>{children}</ChakraProvider>
-        </JotaiProvider>
-      </body>
-    </html>
-  );
-}
+import theme from '@/theme';
+import App from '@/app/page';
+
+const root = createRoot(document.getElementById('root')!);
+root.render(
+  <StrictMode>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <JotaiProvider>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </JotaiProvider>
+  </StrictMode>
+);
