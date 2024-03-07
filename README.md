@@ -4,8 +4,8 @@ Welcome to Scholar Compass AI Chatbot, your personalized assistant for universit
 
 ![test](https://github.com/Scholar-Compass/Scholar-Compass-front/assets/41807109/5f27e7fc-21b6-4ad0-80c4-1b187a904868)
 
-
 ## Features
+
 - **Personalized Recommendations**: Ask questions about your strengths and interests, and Scholar Compass will recommend majors and universities tailored to you.
 
 - **Information Retrieval**: Get detailed information about universities and specific aspects like academics and campus life.
@@ -15,31 +15,36 @@ Welcome to Scholar Compass AI Chatbot, your personalized assistant for universit
 - **University Database**: Access a growing database of universities, continuously updated with data contributed by current students.
 
 ### Conversational Examples
+
 **General Query**
 
 - **User**: "I am a student who is good at math and physics. Can you recommend some majors and universities?"
 
 **Information Retrieval**
+
 - **User**: "Beijing University + Academic"
 - **User**: "University of Hong Kong + Campus Life"
 
 **Supported Universities**
+
 - **User**: "Which universities are currently supported?"
 
 ## Tech Stack
+
 Scholar Compass uses the following technologies and services:
+
 - React
 - Next.js
 - Chakra UI
 - OpenAI API
 
-
 ## Running Scholar Compass locally
+
 1. Install the required dependencies:
-    ```bash
-    pnpm install
-    ```
+   ```bash
+   pnpm install
+   ```
 2. Start the development server:
-    ```bash
-    pnpm dev
-    ```
+   ```bash
+   pnpm dev
+   ```
