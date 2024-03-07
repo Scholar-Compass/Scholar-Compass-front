@@ -10,7 +10,6 @@ import {
   Icon,
   useColorModeValue,
   IconButton,
-  Text,
 } from '@chakra-ui/react';
 import { FaPaperPlane } from 'react-icons/fa';
 import NavBar from '@/components/NavBar';
