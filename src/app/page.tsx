@@ -76,13 +76,7 @@ function App() {
         ))}
         {isLoading && <MessageMask />}
       </ScrollBox>
-      <Flex
-        p={4}
-        width="100%"
-        bottom={0}
-        alignItems="center"
-        bgColor={useColorModeValue('default.light', 'default.dark')}
-      >
+      <Flex p={4} width="100%" bottom={0} alignItems="center">
         <InputGroup>
           <Input
             placeholder="Type your question..."

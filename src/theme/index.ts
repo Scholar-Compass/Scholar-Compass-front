@@ -32,12 +32,6 @@ const theme = extendTheme({
     initialColorMode: mkdocs_color_mode(),
     useSystemColorMode: false,
   },
-  colors: {
-    default: {
-      light: 'white',
-      dark: '#363c46',
-    },
-  },
 });
 
 export default theme;
