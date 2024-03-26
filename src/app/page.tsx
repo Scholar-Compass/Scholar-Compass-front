@@ -6,16 +6,18 @@ import {
   InputRightElement,
   Icon,
   useColorModeValue,
+  useColorMode,
   IconButton,
 } from '@chakra-ui/react';
 import { FaPaperPlane } from 'react-icons/fa';
-import NavBar from '@/components/NavBar';
+import LanguageSwitch from '@/components/LanguageSwitch';
 import Message, { MessageMask, MessageType } from '@/components/Message';
 import { getBotResponse } from '@/service/query';
 import ScrollBox from '@/components/ScrollBox';
 import { useAtomValue } from 'jotai';
 import { languageAtom } from '@/utils/atom';
 import { systemMessage } from '@/utils/strings';
+import { mkdocs_color_mode } from '@/theme';
 
 function App() {
   const language = useAtomValue(languageAtom);
@@ -66,9 +68,20 @@ function App() {
     }
   };
 
+  // Sync color mode from mkdocs-material
+  const { setColorMode } = useColorMode();
+  document.addEventListener('DOMContentLoaded', function () {
+    const ref = document.querySelector('[data-md-component=palette]');
+    ref?.addEventListener('change', function () {
+      setColorMode(mkdocs_color_mode());
+    });
+  });
+
   return (
     <Flex flexDir="column">
-      <NavBar />
+      <Flex width="100%" justify="right">
+        <LanguageSwitch />
+      </Flex>
       <ScrollBox flex={1} px={8} py={4}>
         <Message {...initialMessage}>{systemMessage[language]}</Message>
         {messages?.map((message, index) => (
