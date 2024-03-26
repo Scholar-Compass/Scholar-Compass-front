@@ -66,13 +66,10 @@ function App() {
     }
   };
 
-  const navBarH = [50, 55, 60].map(h => h + 'px');
-  const inputH = '75px';
-
   return (
-    <Flex minH="100vh" flexDir="column">
-      <NavBar h={navBarH} />
-      <ScrollBox mt={navBarH} mb={inputH} flex={1} px={8} py={4}>
+    <Flex flexDir="column">
+      <NavBar />
+      <ScrollBox flex={1} px={8} py={4}>
         <Message {...initialMessage}>{systemMessage[language]}</Message>
         {messages?.map((message, index) => (
           <Message key={index} {...message} />
@@ -81,11 +78,8 @@ function App() {
       </ScrollBox>
       <Flex
         p={4}
-        pos="fixed"
         width="100%"
         bottom={0}
-        zIndex={999}
-        h={inputH}
         alignItems="center"
         bgColor={useColorModeValue('default.light', 'default.dark')}
       >

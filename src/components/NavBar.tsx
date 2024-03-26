@@ -44,9 +44,7 @@ const NavBar = (props: BoxProps) => {
       justify="center"
       align="center"
       width="100%"
-      pos="fixed"
       top={0}
-      zIndex={999}
       justifyContent="space-between"
       {...props}
     >
