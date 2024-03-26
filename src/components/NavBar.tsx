@@ -1,14 +1,7 @@
-import {
-  BoxProps,
-  IconButton,
-  Flex,
-  Text,
-  useColorMode,
-  Button,
-} from '@chakra-ui/react';
+import { BoxProps, Flex, Text, useColorMode, Button } from '@chakra-ui/react';
 import { useAtom } from 'jotai';
-import { FaRegMoon, FaSun } from 'react-icons/fa';
 import { languageAtom } from '@/utils/atom';
+import { mkdocs_color_mode } from '@/theme';
 
 const LanguageSwitch = () => {
   const [language, setLanguage] = useAtom(languageAtom);
@@ -35,7 +28,15 @@ const LanguageSwitch = () => {
 };
 
 const NavBar = (props: BoxProps) => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  // Sync color mode from mkdocs-material
+  const { setColorMode } = useColorMode();
+  document.addEventListener('DOMContentLoaded', function () {
+    const ref = document.querySelector('[data-md-component=palette]');
+    ref?.addEventListener('change', function () {
+      setColorMode(mkdocs_color_mode());
+    });
+  });
+
   return (
     <Flex
       p={4}
@@ -48,21 +49,6 @@ const NavBar = (props: BoxProps) => {
       justifyContent="space-between"
       {...props}
     >
-      <IconButton
-        aria-label="Toggle color mode"
-        icon={colorMode === 'light' ? <FaRegMoon /> : <FaSun />}
-        onClick={toggleColorMode}
-        variant="ghost"
-        color="current"
-        transition="transform 0.1s"
-        _hover={{
-          transform: 'scale(1.2)',
-        }}
-        _active={{
-          bgColor: 'transparent',
-        }}
-        size={['md', 'md', 'lg']}
-      />
       <Text
         textAlign="center"
         fontWeight="bold"

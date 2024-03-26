@@ -19,6 +19,59 @@
     ></script>
   </head>
   <body>
+    <script>
+      // Mock as mkdocs-material
+      function __md_get(key) {
+        if (key === '__palette') {
+          const ref = document.querySelector('[data-md-component=palette]');
+          for (const option of ref.children) {
+            if (option.checked) {
+              return {
+                index: Number(option.id.replace('__palette_')),
+                color: {
+                  media: option.dataset.mdColorMedia,
+                  scheme: option.dataset.mdColorScheme,
+                  primary: option.dataset.mdColorPrimary,
+                  accent: option.dataset.mdColorAccent,
+                },
+              };
+            }
+          }
+        }
+      }
+    </script>
+    <form data-md-component="palette">
+      <input
+        data-md-color-media="(prefers-color-scheme)"
+        data-md-color-scheme="default"
+        data-md-color-primary="blue"
+        data-md-color-accent="indigo"
+        aria-label="切换到亮色"
+        type="radio"
+        name="__palette"
+        id="__palette_0"
+      />
+      <input
+        data-md-color-media="(prefers-color-scheme: dark)"
+        data-md-color-scheme="slate"
+        data-md-color-primary="blue"
+        data-md-color-accent="indigo"
+        aria-label="自动设置亮暗"
+        type="radio"
+        name="__palette"
+        id="__palette_2"
+      />
+      <input
+        data-md-color-media="(prefers-color-scheme: light)"
+        data-md-color-scheme="default"
+        data-md-color-primary="blue"
+        data-md-color-accent="indigo"
+        aria-label="切换到暗色"
+        type="radio"
+        name="__palette"
+        id="__palette_1"
+      />
+    </form>
     <div id="root"></div>
   </body>
 </html>
