@@ -7,6 +7,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import theme from '@/theme';
+import ResetCSS from '@/theme/ResetCSS';
 import App from '@/app/page';
 
 const root = createRoot(document.getElementById('root')!);
@@ -14,9 +15,16 @@ root.render(
   <StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <JotaiProvider>
-      <ChakraProvider theme={theme}>
-        <App />
-      </ChakraProvider>
+      <chakra-scope>
+        <ChakraProvider
+          theme={theme}
+          disableGlobalStyle={true}
+          resetCSS={false}
+        >
+          <ResetCSS />
+          <App />
+        </ChakraProvider>
+      </chakra-scope>
     </JotaiProvider>
   </StrictMode>
 );
