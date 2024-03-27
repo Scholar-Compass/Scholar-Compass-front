@@ -39,6 +39,11 @@
           }
         }
       }
+      var document$ = {
+        subscribe: callback => {
+          callback();
+        },
+      };
     </script>
     <form data-md-component="palette">
       <input
@@ -72,6 +77,6 @@
         id="__palette_1"
       />
     </form>
-    <div id="root"></div>
+    <div id="bot-root"></div>
   </body>
 </html>

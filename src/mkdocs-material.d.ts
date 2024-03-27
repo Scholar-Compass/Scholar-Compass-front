@@ -43,4 +43,21 @@ declare global {
   function __md_get<T>(key: string, storage?: Storage, base?: URL): T | null;
 }
 
+declare global {
+  /**
+   * Document observable
+   *
+   * https://rxjs.dev/api/index/class/Observable
+   */
+  const document$: {
+    /**
+     * Install a callback function subscribing to events on the `document$` observable exported by Material for MkDocs.
+     * Using the document$ observable is particularly important if you are using instant loading since it will not result in a page refresh in the browser - but subscribers on the observable will be notified.
+     *
+     * https://squidfunk.github.io/mkdocs-material/customization/#__codelineno-4-1
+     */
+    subscribe: (callback: () => void) => void;
+  };
+}
+
 export {};
