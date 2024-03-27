@@ -15,7 +15,7 @@ export default defineConfig({
     // https://vitejs.dev/guide/backend-integration.html
     manifest: true,
     rollupOptions: {
-      input: '/src/app/layout.tsx',
+      input: '/src/main.tsx',
     },
   },
 });
