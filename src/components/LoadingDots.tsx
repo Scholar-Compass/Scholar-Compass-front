@@ -1,5 +1,5 @@
-import { Box, BoxProps, HStack, keyframes } from '@chakra-ui/react';
-import { css } from '@emotion/react';
+import { Box, BoxProps, HStack } from '@chakra-ui/react';
+import { keyframes, css } from '@emotion/react';
 
 const dotAnimation = keyframes`
   0% {
